@@ -76,6 +76,77 @@ export default class Home extends Component {
                 <div style={{ width: "100px!important" }}></div>
               </div>
             </div>
+            <div className="cardSection">
+              <div className="section-title">
+                <h2>
+                  <i className="bi bi-calendar-check"></i> &nbsp; Vote Selesai
+                </h2>
+                <div className="more">Lebih Banyak</div>
+              </div>
+              <div className="card-wrapper">
+                <CardEvent
+                  eventName="Pemilihan Ketua OSIS"
+                  eventStartDate="21/02/2021"
+                  eventEndDate="22/02/2021"
+                  eventDesc="Ini deksripsi dari acara"
+                />
+                <CardEvent
+                  eventName="Pemilihan Ketua OSIS"
+                  eventStartDate="21/02/2021"
+                  eventEndDate="22/02/2021"
+                  eventDesc="Ini deksripsi dari acara"
+                />
+                <CardEvent
+                  eventName="Pemilihan Ketua OSIS"
+                  eventStartDate="21/02/2021"
+                  eventEndDate="22/02/2021"
+                  eventDesc="Ini deksripsi dari acara"
+                />
+                <CardEvent
+                  eventName="Pemilihan Ketua OSIS"
+                  eventStartDate="21/02/2021"
+                  eventEndDate="22/02/2021"
+                  eventDesc="Ini deksripsi dari acara"
+                />
+                <div style={{ width: "100px!important" }}></div>
+              </div>
+            </div>
+            <div className="cardSection">
+              <div className="section-title">
+                <h2>
+                  <i className="bi bi-calendar-week"></i> &nbsp; Vote Segera
+                  Dimulai
+                </h2>
+                <div className="more">Lebih Banyak</div>
+              </div>
+              <div className="card-wrapper">
+                <CardEvent
+                  eventName="Pemilihan Ketua OSIS"
+                  eventStartDate="21/02/2021"
+                  eventEndDate="22/02/2021"
+                  eventDesc="Ini deksripsi dari acara"
+                />
+                <CardEvent
+                  eventName="Pemilihan Ketua OSIS"
+                  eventStartDate="21/02/2021"
+                  eventEndDate="22/02/2021"
+                  eventDesc="Ini deksripsi dari acara"
+                />
+                <CardEvent
+                  eventName="Pemilihan Ketua OSIS"
+                  eventStartDate="21/02/2021"
+                  eventEndDate="22/02/2021"
+                  eventDesc="Ini deksripsi dari acara"
+                />
+                <CardEvent
+                  eventName="Pemilihan Ketua OSIS"
+                  eventStartDate="21/02/2021"
+                  eventEndDate="22/02/2021"
+                  eventDesc="Ini deksripsi dari acara"
+                />
+                <div style={{ width: "100px!important" }}></div>
+              </div>
+            </div>
           </div>
         </div>
       </Fragment>
