@@ -1,0 +1,24 @@
+.button {
+  background-color: $primary;
+  color: $white;
+  display: flex;
+  align-items: center;
+  font-size: 9px;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    box-shadow: 3px 3px 0 $yellow;
+  }
+  &:active {
+    background-color: $yellow;
+    box-shadow: none;
+    transform: translate(2px, 3px);
+  }
+  i {
+    margin-left: 10px;
+  }
+  p {
+    cursor: pointer;
+    font-size: 10px;
+  }
+}

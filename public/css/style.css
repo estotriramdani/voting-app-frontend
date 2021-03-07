@@ -1,0 +1,15 @@
+.pembungkus {
+  width: 411px;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  margin: auto;
+  box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow-x: hidden;
+}
+
+@media screen and (max-width: 600px) {
+  .pembungkus {
+    width: 100%;
+  }
+}

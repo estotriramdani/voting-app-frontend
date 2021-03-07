@@ -1,0 +1,16 @@
+.section-title {
+  padding-left: 30px;
+  padding-right: 30px;
+  justify-content: space-between;
+  display: flex;
+  h2 {
+    font-size: 12px;
+    font-weight: bold;
+    color: $primary;
+  }
+  .more {
+    font-size: 11px;
+    color: $primary;
+    text-decoration: underline;
+  }
+}

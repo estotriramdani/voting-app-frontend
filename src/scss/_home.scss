@@ -1,0 +1,44 @@
+.hero {
+  width: 100%;
+  height: 100px;
+  background-color: $secondary;
+  background: linear-gradient(to right);
+  // border-bottom-left-radius: 30px;
+  // border-bottom-right-radius: 30px;
+}
+.home {
+  min-height: 100vh;
+  padding: 0 30px 55px 30px;
+  .button-login-register {
+    position: sticky;
+    z-index: 21;
+    top: 70px;
+    height: 40px;
+    background-color: $primary;
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: $white;
+    margin-top: -20px;
+    box-shadow: 3px 3px 16px rgba(0, 0, 0, 0.1);
+    &-item {
+      display: flex;
+      color: $white;
+      align-items: center;
+      width: 50%;
+
+      p {
+        cursor: pointer;
+        font-size: 10px;
+      }
+    }
+  }
+
+  .how-button {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+}
