@@ -1,46 +1,39 @@
 import React, { Component, Fragment, Suspense } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from '../../../component/Button/Button';
 import CardLoading from '../../../component/CardLoading/CardLoading';
 import RegisterForm from '../../../component/RegisterFrom/RegisterForm';
-import LoginForm from '../../../component/RegisterFrom/RegisterForm';
+import LoginForm from '../../../component/LoginForm/LoginForm';
 
 const CardEvent = React.lazy(() =>
   import('../../../component/CardEvent/CardEvent')
 );
 
-export default class Home extends Component {
+class Home extends Component {
   state = {
     isFormShow: false,
     whichForm: '',
   };
 
-  showForm = (data) => {
-    this.setState({
-      isFormShow: true,
-      whichForm: data.target.id,
-    });
-    console.log(data.target.id);
-  };
-
   popUpForm = () => {
-    if (this.state.whichForm === 'login') {
-      alert('hahaha');
-    } else if (this.state.whichForm === 'register') {
-      return <RegisterForm click="halo" />;
+    if (this.props.whichForm === 'login') {
+      return <LoginForm />;
+    } else if (this.props.whichForm === 'register') {
+      return <RegisterForm />;
     }
   };
 
   render() {
     return (
       <Fragment>
-        {this.state.isFormShow === true ? this.popUpForm() : ''}
+        {this.props.isFormShow === true ? this.popUpForm() : ''}
         <div className="hero"></div>
         <div className="home">
           <div className="button-login-register">
             <div
               className="button-login-register-item"
-              onClick={this.showForm}
+              onClick={this.props.showForm}
               style={{ cursor: 'pointer' }}
               id="login"
             >
@@ -51,14 +44,14 @@ export default class Home extends Component {
               className="button-login-register-item"
               id="register"
               style={{ cursor: 'pointer' }}
-              onClick={this.showForm}
+              onClick={this.props.showForm}
             >
               <i className="bi bi-person-plus"></i> &nbsp; | &nbsp;
               <p id="register">Daftar Akun Baru</p>
             </div>
           </div>
           <div className="how-button">
-            <div onClick={this.showForm}>
+            <div onClick={this.props.showForm} style={{ marginRight: '10px' }}>
               <Button
                 height="40px"
                 width="167px"
@@ -128,3 +121,23 @@ export default class Home extends Component {
     );
   }
 }
+
+const reduxState = (state) => {
+  return {
+    isFormShow: state.isFormShow,
+    whichForm: state.whichForm,
+  };
+};
+
+const reduxDispatch = (dispatch) => ({
+  showForm: (data) => {
+    console.log(data.target.id);
+    return dispatch({
+      type: 'CHANGE_SHOWMODAL',
+      value: true,
+      form: data.target.id,
+    });
+  },
+});
+
+export default connect(reduxState, reduxDispatch)(Home);

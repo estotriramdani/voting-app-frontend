@@ -40,3 +40,19 @@
     margin-top: 20px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .home {
+    .how-button {
+      justify-content: center;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .home {
+    .how-button {
+      justify-content: space-between;
+    }
+  }
+}

@@ -43,3 +43,11 @@
     transform: none;
   }
 }
+
+i.bi-x-circle {
+  cursor: pointer;
+  transition: 0.2s;
+  &:hover {
+    color: $yellow;
+  }
+}

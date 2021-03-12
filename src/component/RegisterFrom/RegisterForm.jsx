@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class RegisterForm extends Component {
   state = {
@@ -57,7 +58,6 @@ class RegisterForm extends Component {
     this.setState({ [name]: value }, () => {
       this.validateField(name, value);
     });
-    console.log(this.state);
   };
 
   render() {
@@ -66,7 +66,10 @@ class RegisterForm extends Component {
         <div className="login-wrapper">
           <div className="header-login">
             <h2>Registrasi</h2>
-            <i className="bi bi-x-circle" onClick={0}></i>
+            <i
+              className="bi bi-x-circle"
+              onClick={() => this.props.showForm()}
+            ></i>
           </div>
           <div className="form-wrapper">
             <input
@@ -143,5 +146,18 @@ class RegisterForm extends Component {
     );
   }
 }
+const reduxState = (state) => {
+  return {
+    isFormShow: state.isFormShow,
+  };
+};
 
-export default RegisterForm;
+const reduxDispatch = (dispatch) => ({
+  showForm: () => {
+    return dispatch({
+      type: 'CHANGE_SHOWMODAL',
+      value: false,
+    });
+  },
+});
+export default connect(reduxState, reduxDispatch)(RegisterForm);

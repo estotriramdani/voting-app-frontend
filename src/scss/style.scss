@@ -11,6 +11,10 @@
 
 @import 'home';
 
+body {
+  background-color: rgba($color: $primary, $alpha: 0.8);
+}
+
 button {
   border: none;
 }
