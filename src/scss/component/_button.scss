@@ -4,8 +4,18 @@
   display: flex;
   align-items: center;
   font-size: 9px;
-  cursor: pointer;
+
   transition: 0.3s;
+  &:disabled {
+    cursor: not-allowed;
+  }
+  &-action {
+    font-size: 14px;
+    text-align: center !important;
+    display: block;
+    width: 90px;
+    padding: 15px 0px;
+  }
   &:hover {
     box-shadow: 3px 3px 0 $yellow;
   }
@@ -20,5 +30,16 @@
   p {
     cursor: pointer;
     font-size: 10px;
+  }
+}
+
+.disabled {
+  color: $white;
+  background: $gray;
+  cursor: not-allowed;
+  &:hover {
+    box-shadow: none;
+    background-color: $gray;
+    transform: none;
   }
 }

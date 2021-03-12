@@ -1,10 +1,16 @@
-@import "variables";
-@import "reset";
-@import "headerBottom";
+@import 'variables';
+@import 'reset';
+@import 'headerBottom';
 
-@import "component/button";
-@import "component/cardEvent";
-@import "component/cardSection";
-@import "component/sectionTitle";
+@import 'component/button';
+@import 'component/cardEvent';
+@import 'component/cardSection';
+@import 'component/sectionTitle';
+@import 'component/loginForm';
+@import 'component/smallerComponent/input';
 
-@import "home";
+@import 'home';
+
+button {
+  border: none;
+}

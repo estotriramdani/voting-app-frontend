@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, Suspense } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "../../scss/style.scss";
-import Home from "../Pages/Home/Home";
+import Loading from "../Pages/Home/Home";
+const Home = React.lazy(() => import("../Pages/Home/Home"));
 
 export class Parent extends Component {
   state = {
@@ -89,7 +90,9 @@ export class Parent extends Component {
           </div>
         </div>
         <Route exact path="/">
-          <Home />
+          <Suspense fallback={<div>Loading ...</div>}>
+            <Home />
+          </Suspense>
         </Route>
       </Router>
     );
