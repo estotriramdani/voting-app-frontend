@@ -59,7 +59,7 @@ class Home extends Component {
                 title="Cara Registrasi Acara"
               />
             </div>
-            <div onClick={this.showForm}>
+            <div onClick={this.props.showForm}>
               <Button
                 height="40px"
                 width="167px"
@@ -75,14 +75,17 @@ class Home extends Component {
                   <i className="bi bi-calendar-event"></i> &nbsp; Vote Sedang
                   Berlangsung
                 </h2>
-                <div className="more">
+                <div
+                  className="more"
+                  onClick={() => this.props.changePathName()}
+                >
                   <Link to="/daftar-acara"> Lebih Banyak</Link>
                 </div>
               </div>
               <div className="card-wrapper">
                 <Suspense fallback={<CardLoading />}>
                   <CardEvent
-                    eventName="Pemilihan Ketua OSIS"
+                    eventName="Detail"
                     eventStartDate="21/02/2021"
                     eventEndDate="22/02/2021"
                     eventDesc="Ini deksripsi dari acara"
@@ -90,7 +93,7 @@ class Home extends Component {
                 </Suspense>
                 <Suspense fallback={<CardLoading />}>
                   <CardEvent
-                    eventName="Pemilihan Ketua OSIS"
+                    eventName="Detail"
                     eventStartDate="21/02/2021"
                     eventEndDate="22/02/2021"
                     eventDesc="Ini deksripsi dari acara"
@@ -98,7 +101,7 @@ class Home extends Component {
                 </Suspense>
                 <Suspense fallback={<CardLoading />}>
                   <CardEvent
-                    eventName="Pemilihan Ketua OSIS"
+                    eventName="Detail"
                     eventStartDate="21/02/2021"
                     eventEndDate="22/02/2021"
                     eventDesc="Ini deksripsi dari acara"
@@ -106,7 +109,7 @@ class Home extends Component {
                 </Suspense>
                 <Suspense fallback={<CardLoading />}>
                   <CardEvent
-                    eventName="Pemilihan Ketua OSIS"
+                    eventName="Detail"
                     eventStartDate="21/02/2021"
                     eventEndDate="22/02/2021"
                     eventDesc="Ini deksripsi dari acara"
@@ -126,6 +129,7 @@ const reduxState = (state) => {
   return {
     isFormShow: state.isFormShow,
     whichForm: state.whichForm,
+    pathName: state.pathname,
   };
 };
 
@@ -136,6 +140,12 @@ const reduxDispatch = (dispatch) => ({
       type: 'CHANGE_SHOWMODAL',
       value: true,
       form: data.target.id,
+    });
+  },
+  changePathName: () => {
+    return dispatch({
+      type: 'CHANGE_PATHNAME',
+      value: window.location.pathname,
     });
   },
 });

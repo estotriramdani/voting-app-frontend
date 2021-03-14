@@ -6,13 +6,15 @@ class RegisterForm extends Component {
     email: '',
     nama: '',
     password: '',
-    password2: '',
-    isEmail: true,
-    readyToSubmit: true,
+    readyToSubmit: false,
     formErrors: { email: '', password: '' },
     emailValid: false,
     passwordValid: false,
     formValid: null,
+    emailExist: '',
+    isSuccess: null,
+    buttonTitle: 'Daftar',
+    isLoading: false,
   };
 
   validateField(fieldName, value) {
@@ -52,12 +54,56 @@ class RegisterForm extends Component {
     return 'disabled';
   };
 
+  checkEmailExist = () => {
+    fetch('http://localhost:3004/email')
+      .then((res) => res.json())
+      .then((res) => {
+        for (let i = 0; i < res.length; i++) {
+          if (res[i].email === this.state.email) {
+            this.setState({
+              emailExist: true,
+            });
+            break;
+          } else {
+            this.setState({
+              emailExist: false,
+            });
+          }
+          // console.log(res[i].email);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
   handleChangeForm = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({ [name]: value }, () => {
       this.validateField(name, value);
     });
+  };
+
+  handleSubmit = () => {
+    this.checkEmailExist();
+    setTimeout(() => {
+      if (this.state.emailExist === false) {
+        this.setState({
+          isSuccess: true,
+        });
+      } else {
+        this.setState({
+          isSuccess: false,
+        });
+      }
+
+      if (!this.state.isSuccess) {
+        console.log('Pendaftaran gagal. Email sudah dipakai');
+        this.setState({
+          email: '',
+          password: '',
+        });
+      }
+    }, 1000);
   };
 
   render() {
@@ -71,6 +117,13 @@ class RegisterForm extends Component {
               onClick={() => this.props.showForm()}
             ></i>
           </div>
+          {this.state.isSuccess === false ? (
+            <small className="alert-form-danger">Email sudah dipakai</small>
+          ) : (
+            <small className="alert-form-success">
+              Pendaftaran berhasil, silakan login
+            </small>
+          )}
           <div className="form-wrapper">
             <input
               className="input"
@@ -113,39 +166,31 @@ class RegisterForm extends Component {
             ) : (
               ''
             )}
-            <input
-              className="input"
-              type="password"
-              name="password2"
-              id="password2"
-              value={this.state.password2}
-              placeholder="Ulangi password"
-              onChange={(event) => this.handleChangeForm(event)}
-              required
-            />
           </div>
-          {this.state.formValid === false ? (
-            <small className="alert-form">Periksa data Anda</small>
+          {this.state.isSuccess === false || this.state.isSuccess === null ? (
+            <button
+              type="submit"
+              className={`button button-action ${
+                this.state.formValid === false || this.state.formValid === null
+                  ? this.errorClass()
+                  : ''
+              }`}
+              disabled={!this.state.formValid}
+              onClick={this.handleSubmit}
+            >
+              {this.state.isLoading === false ? 'Daftar' : 'Mengecek ...'}
+            </button>
           ) : (
-            ''
+            <small className="alert-form-success-btn">
+              <i className="bi bi-check-circle"></i> Pendaftaran Berhasil
+            </small>
           )}
-
-          <button
-            type="submit"
-            className={`button button-action ${
-              this.state.formValid === false || this.state.formValid === null
-                ? this.errorClass()
-                : ''
-            }`}
-            disabled={!this.state.formValid}
-          >
-            Daftar
-          </button>
         </div>
       </div>
     );
   }
 }
+
 const reduxState = (state) => {
   return {
     isFormShow: state.isFormShow,

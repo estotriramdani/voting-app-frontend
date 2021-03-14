@@ -12,6 +12,13 @@ const reducer = (state = initialState, action) => {
       whichForm: action.form,
     };
   }
+
+  if (action.type === 'CHANGE_PATHNAME') {
+    return {
+      ...state,
+      pathName: action.value,
+    };
+  }
   return state;
 };
 
