@@ -2,20 +2,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class RegisterForm extends Component {
-  state = {
-    email: '',
-    nama: '',
-    password: '',
-    readyToSubmit: false,
-    formErrors: { email: '', password: '' },
-    emailValid: false,
-    passwordValid: false,
-    formValid: null,
-    emailExist: '',
-    isSuccess: null,
-    buttonTitle: 'Daftar',
-    isLoading: false,
-  };
+  constructor() {
+    super();
+    this.state = {
+      email: '',
+      nama: '',
+      password: '',
+      formErrors: { email: '', password: '' },
+      emailValid: false,
+      passwordValid: false,
+      formValid: false,
+      emailExist: '',
+      isSuccess: null,
+      buttonTitle: 'Daftar',
+      isLoading: false,
+    };
+  }
 
   validateField(fieldName, value) {
     let fieldValidationErrors = this.state.formErrors;
@@ -85,6 +87,19 @@ class RegisterForm extends Component {
 
   handleSubmit = () => {
     this.checkEmailExist();
+
+    // isLoading true dahulu
+    this.setState({
+      isLoading: true,
+    });
+
+    // isLoading dikembalikan jadi false ketika sudah 2 detik tombol diklik
+    setTimeout(() => {
+      this.setState({
+        isLoading: false,
+      });
+    }, 2000);
+
     setTimeout(() => {
       if (this.state.emailExist === false) {
         this.setState({
@@ -101,9 +116,10 @@ class RegisterForm extends Component {
         this.setState({
           email: '',
           password: '',
+          formValid: false,
         });
       }
-    }, 1000);
+    }, 2000);
   };
 
   render() {
@@ -120,9 +136,7 @@ class RegisterForm extends Component {
           {this.state.isSuccess === false ? (
             <small className="alert-form-danger">Email sudah dipakai</small>
           ) : (
-            <small className="alert-form-success">
-              Pendaftaran berhasil, silakan login
-            </small>
+            ''
           )}
           <div className="form-wrapper">
             <input
@@ -181,9 +195,15 @@ class RegisterForm extends Component {
               {this.state.isLoading === false ? 'Daftar' : 'Mengecek ...'}
             </button>
           ) : (
-            <small className="alert-form-success-btn">
-              <i className="bi bi-check-circle"></i> Pendaftaran Berhasil
-            </small>
+            <div>
+              <small className="alert-form-success-btn">
+                <i className="bi bi-check-circle"></i> Pendaftaran Berhasil
+              </small>{' '}
+              <br />
+              <small className="alert-form-success">
+                Pendaftaran berhasil, silakan login
+              </small>
+            </div>
           )}
         </div>
       </div>

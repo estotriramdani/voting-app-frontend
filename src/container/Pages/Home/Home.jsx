@@ -30,26 +30,32 @@ class Home extends Component {
         {this.props.isFormShow === true ? this.popUpForm() : ''}
         <div className="hero"></div>
         <div className="home">
-          <div className="button-login-register">
-            <div
-              className="button-login-register-item"
-              onClick={this.props.showForm}
-              style={{ cursor: 'pointer' }}
-              id="login"
-            >
-              <i className="bi bi-person"></i> &nbsp; | &nbsp;
-              <p id="login">Masuk Akun Lama</p>
+          {!localStorage.getItem('userId') ? (
+            <div>
+              <div className="button-login-register">
+                <div
+                  className="button-login-register-item"
+                  onClick={this.props.showForm}
+                  style={{ cursor: 'pointer' }}
+                  id="login"
+                >
+                  <i className="bi bi-person"></i> &nbsp; | &nbsp;
+                  <p id="login">Masuk Akun Lama</p>
+                </div>
+                <div
+                  className="button-login-register-item"
+                  id="register"
+                  style={{ cursor: 'pointer' }}
+                  onClick={this.props.showForm}
+                >
+                  <i className="bi bi-person-plus"></i> &nbsp; | &nbsp;
+                  <p id="register">Daftar Akun Baru</p>
+                </div>
+              </div>
             </div>
-            <div
-              className="button-login-register-item"
-              id="register"
-              style={{ cursor: 'pointer' }}
-              onClick={this.props.showForm}
-            >
-              <i className="bi bi-person-plus"></i> &nbsp; | &nbsp;
-              <p id="register">Daftar Akun Baru</p>
-            </div>
-          </div>
+          ) : (
+            ''
+          )}
           <div className="how-button">
             <div onClick={this.props.showForm} style={{ marginRight: '10px' }}>
               <Button
@@ -135,7 +141,6 @@ const reduxState = (state) => {
 
 const reduxDispatch = (dispatch) => ({
   showForm: (data) => {
-    console.log(data.target.id);
     return dispatch({
       type: 'CHANGE_SHOWMODAL',
       value: true,

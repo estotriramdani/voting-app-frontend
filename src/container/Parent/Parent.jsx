@@ -91,7 +91,6 @@ export class Parent extends Component {
             <div className="title">Keluar</div>
           </div>
         </div>
-        {console.log(this.props)}
         <Route exact path="/">
           <Suspense fallback={<div>Loading ...</div>}>
             <Home />
