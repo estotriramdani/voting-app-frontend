@@ -1,6 +1,4 @@
 .card-wrapper {
-  // margin-left: -30px;
-  // margin-right: -30px;
   margin-top: 20px;
   padding-left: 30px;
   display: flex;
@@ -36,11 +34,17 @@
     overflow: hidden;
     background-color: $secondary;
     line-height: 130px;
+    &:hover {
+      .eye {
+        opacity: 1;
+      }
+    }
     img {
       width: 100%;
       opacity: 0;
     }
     .eye {
+      cursor: pointer;
       transition: 0.3s;
       text-align: center;
       font-size: 36px;
@@ -55,11 +59,7 @@
       opacity: 0;
     }
   }
-  &:hover {
-    .eye {
-      opacity: 1;
-    }
-  }
+
   .event-name {
     font-size: 10px;
     height: 25px;

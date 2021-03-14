@@ -1,10 +1,12 @@
 .hero {
   width: 100%;
   height: 100px;
-  background-color: $secondary;
+  // background-color: $secondary;
   background: linear-gradient(to right);
+  animation: muncul 0.5s;
 }
 .home {
+  animation: muncul 0.5s;
   min-height: 100vh;
   padding: 0 30px 75px 30px;
   .button-login-register {
@@ -54,5 +56,14 @@
     .how-button {
       justify-content: space-between;
     }
+  }
+}
+
+@keyframes muncul {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

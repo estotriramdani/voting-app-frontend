@@ -14,15 +14,13 @@
 
 ::-webkit-scrollbar {
   background-color: red;
-  width: 6px;
+  width: 3px;
 }
 ::-webkit-scrollbar-track {
-  background-color: #f8f8f8;
-  width: 6px;
+  background-color: $primary;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: $secondary;
-  width: 6px;
+  background-color: #f8f8f8;
 }
 
 body {

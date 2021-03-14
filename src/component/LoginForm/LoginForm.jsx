@@ -67,6 +67,7 @@ class LoginForm extends Component {
           .then((res) => res.json())
           .then((res) => {
             for (let i = 0; i < res.length; i++) {
+              // emailnya bener, makan akan ngecek password dari email index ke-i
               if (res[i].email === this.state.email) {
                 if (this.state.password === res[i].password) {
                   this.setState({

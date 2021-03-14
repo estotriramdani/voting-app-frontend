@@ -28,10 +28,10 @@ class Home extends Component {
     return (
       <Fragment>
         {this.props.isFormShow === true ? this.popUpForm() : ''}
-        <div className="hero"></div>
         <div className="home">
           {!localStorage.getItem('userId') ? (
             <div>
+              <div className="hero"></div>
               <div className="button-login-register">
                 <div
                   className="button-login-register-item"
@@ -54,7 +54,7 @@ class Home extends Component {
               </div>
             </div>
           ) : (
-            ''
+            <div style={{ height: '50px' }}></div>
           )}
           <div className="how-button">
             <div onClick={this.props.showForm} style={{ marginRight: '10px' }}>

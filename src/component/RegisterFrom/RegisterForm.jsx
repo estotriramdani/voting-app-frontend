@@ -83,6 +83,12 @@ class RegisterForm extends Component {
     this.setState({ [name]: value }, () => {
       this.validateField(name, value);
     });
+
+    // document.addEventListener('keyup', (event) => {
+    //   if (event.which === 13) {
+    //     this.handleSubmit();
+    //   }
+    // });
   };
 
   handleSubmit = () => {
@@ -98,13 +104,16 @@ class RegisterForm extends Component {
       this.setState({
         isLoading: false,
       });
-    }, 2000);
+    }, 1500);
 
     setTimeout(() => {
       if (this.state.emailExist === false) {
         this.setState({
           isSuccess: true,
         });
+        setTimeout(() => {
+          this.props.showForm();
+        }, 2000);
       } else {
         this.setState({
           isSuccess: false,
@@ -112,14 +121,13 @@ class RegisterForm extends Component {
       }
 
       if (!this.state.isSuccess) {
-        console.log('Pendaftaran gagal. Email sudah dipakai');
         this.setState({
           email: '',
           password: '',
           formValid: false,
         });
       }
-    }, 2000);
+    }, 1500);
   };
 
   render() {
